@@ -25,5 +25,5 @@ spring:
 ---  
 service:
   endpoints:
-    cucine: http://localhost:8080
-    consegne: http://localhost:8070
+    cucine: http://192.168.178.30:8080
+    consegne: http://192.168.178.30:8070

@@ -1,4 +1,4 @@
-Demo Saga Coreography Mutui - Kafka Stream Classic
+Demo Saga Orchestrator Mutui - Kafka Stream Classic
 
 ==================
 
