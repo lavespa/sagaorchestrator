@@ -1,0 +1,29 @@
+server:
+  port: 8083
+  
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        
+spring:
+  application:
+    name: ordine-orchestrator
+  kafka:
+    consumer:
+      bootstrap-servers: 192.168.178.30:9092
+      group-id: orchestrator-service
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    producer:
+      bootstrap-servers: 192.168.178.30:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+  
+---  
+service:
+  endpoints:
+    cucine: http://localhost:8080
+    consegne: http://localhost:8070

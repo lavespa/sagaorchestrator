@@ -1,0 +1,15 @@
+server:
+  compression:
+    enabled: true
+  port: 8070
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+spring:
+  application:
+    name: consegne-service
+        
+
