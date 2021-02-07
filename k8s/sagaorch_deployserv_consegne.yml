@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: consegneservice
+  labels:
+    app: consegneservice
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: consegneservice
+  template:
+    metadata:
+      labels:
+        app: consegneservice
+    spec:
+      containers:
+        - name: consegneservice
+          image: sagacoreog/consegne-services:0.0.1
+          ports:
+          - containerPort: 8070
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: consegneservice
+  labels:
+    app: consegneservice
+spec:
+  ports:
+  - port: 8070
+    protocol: TCP
+    targetPort: 8070
+  selector:
+    app: consegneservice
+  type: ClusterIP

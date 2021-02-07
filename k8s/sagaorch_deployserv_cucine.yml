@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cucineservice
+  labels:
+    app: cucineservice
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cucineservice
+  template:
+    metadata:
+      labels:
+        app: cucineservice
+    spec:
+      containers:
+        - name: cucineservice
+          image: sagacoreog/cucine-services:0.0.1
+          ports:
+          - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cucineservice
+  labels:
+    app: cucineservice
+spec:
+  ports:
+  - port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: cucineservice
+  type: ClusterIP
